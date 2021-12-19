@@ -4,14 +4,15 @@
 #include<time.h>
 
 int main(){	
-    char linr[100], id[10];
+    char linr[8], id[8];
     int count=0;
     gets(id);
     FILE *ptr= NULL;
     ptr=fopen("id.txt", "r");
     while(fgets(linr, 10, ptr))
     {
-        char *ptr2 = strstr(linr,id);
+        char *ptr2 = NULL;
+        ptr2 = strstr(linr,id);
         if (ptr2!=NULL)
         {
             count=1;
