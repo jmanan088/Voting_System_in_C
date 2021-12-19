@@ -1,11 +1,18 @@
 # SDF_Mini_Project
 Voting system - for SDF-1 Mini Project.
+
 Manan Jain
+
 B63351 ,A5
+
 ECE
+
 SDF Mini Project
+
 ------------------------------------------------------------------------------------
+
 Voting System
+
 As we all know a big democratic country need elections to choose government 
 on a periodic basis. And on the scale of country physical elections or a chit 
 system is impossible. Hence, we need a digital solution which can be used 
@@ -21,11 +28,19 @@ they can enter the code for the person for whom they want to vote and confirm
 to submit. Once submitted the system will automatically go back to the page for 
 next voter to vote. Once the voting is done admin can enter the exit input along 
 with his key to exit the program. After exiting the results will be shown.
+
 ------------------------------------------------------------------------------------
+
 Topics Used
+
 1) STDIN and STDOUT
+
 2) Control Flow
+
 3) Array
+
 4) Functions
+
 5) Pointers
+
 6) File handlin
