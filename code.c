@@ -116,10 +116,34 @@ int admin(){
     return num_candidate;
 }
 
-
+// Voter instruction display
+void voter_instruction(){
+    FILE *users_instructions = NULL;
+    users_instructions = fopen("first_display.txt", "r");
+    char user_line[100];
+    while (fgets(user_line, 100, users_instructions) != NULL)
+    {
+        printf("%s", user_line);
+    }
+    fclose(users_instructions);
+    printf("\n");
+    printf("Press Enter to continue_\n");
+    printf("Or press Q to close the voting process_\n");
+    char a = "A";
+    if (a=="q" || a=="Q")
+    {
+        // Attach here the function to close application
+    }
+    while (a!="\n")
+    {
+        getchar(a);
+    }
+    system("clear");
+}
 
 int main(){	
     int num_candidate;
+    // calling the fucntion for all admin related stuuf
     num_candidate = admin();
     // Taking the info for candidates.
     struct candidates info[num_candidate];
@@ -131,12 +155,14 @@ int main(){
         printf("\n");
     }
     printf("Press Enter to continue_");
+    char a;
     a = "A";
     while (a!="\n")
     {
       getchar(a);
     }
     system("clear");
-    
+    // Calling the function to display voter instructions 
+    voter_instruction();
     return 0;
 }
