@@ -115,7 +115,7 @@ int admin(){
     return num_candidate;
 }
 
-// Voter instruction display
+// Voter instruction display.
 void voter_instruction(){
     FILE *voters_instructions = NULL;
     voters_instructions = fopen("first_display.txt", "r");
@@ -140,7 +140,8 @@ void voter_instruction(){
     system("clear");
 }
 
-void vote(char info[], int num_candidate){
+// To allow voter to vote.
+void vote(struct candidates info[], int num_candidate){
     bool flag = true;
     char codeForVote;
     for (int i = 0; i < num_candidate; i++)
@@ -155,7 +156,7 @@ void vote(char info[], int num_candidate){
     {
         if (codeForVote == info[i].code)
         {
-            ++info[i].vote;
+            ++info[i].votes;
             flag = false;
         }
     }
@@ -203,6 +204,6 @@ int main(){
         system("clear");
         voter_instruction();
     }
-    
+
     return 0;
 }
