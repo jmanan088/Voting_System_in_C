@@ -2,17 +2,31 @@
 #include<string.h>
 #include<stdlib.h>
 
-int inp(){
-    int n;
-    scanf("%d", &n);
-    return n;
-}
+struct stu
+{
+    char a;
+    char b;
+    int c;
+};
 
-int increase(int n){
-    return ++n;
+void func(struct stu infa[],int num){
+    ++infa[0].c;
+    ++infa[1].c;
 }
 
 int main(){	
-    printf("%d", increase(inp()));
+    int num=2;
+    struct stu infa[num];
+    scanf("%c %c %d", &infa[0].a, &infa[0].b, &infa[0].c);
+    getchar();
+    scanf("%c %c %d", &infa[1].a, &infa[1].b, &infa[1].c);
+    func(infa, num);
+    printf("%c %c %d", infa[0].a, infa[0].b, infa[0].c);
+    printf("%c %c %d", infa[1].a, infa[1].b, infa[1].c);
     return 0;
 }
+/* 
+A B 4
+G H 5
+A B 5G H 6 
+*/
