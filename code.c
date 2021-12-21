@@ -13,7 +13,7 @@ struct candidates{
 };
 
 // To collect & verify ID of voter.
-void idCheck(){
+int idCheck(){
     
     char linr[8];
     int countid=0, countdupli = 0;
@@ -46,30 +46,23 @@ void idCheck(){
     fclose(idtxt);
     if (countid==1)
     {
-        printf("yes1");
         if (countdupli==1)
         {
             fclose(duplicatettxt);
             printf("You've already given vote. If think this is incorrect please contact authorities.");
+            return 420;
         }
         else
         {
             fprintf(duplicatettxt, "%s\n", id);
             fclose(duplicatettxt);
-            printf("yes2");
-            // here we link function to allow voter to cast vote.
+            return 69;
         }
     }
     else
     {
-        printf("VOTER ID is does not exist.\nPlease press Enter to continue.");
-        char a = "A";
-        while (a!="\n")
-        {
-            getchar(a);
-        }
-        system("clear");
-        voter_instruction();
+        printf("VOTER ID is does not exist. If think this is incorrect please contact authorities.");
+        return 420;
     }
 }
 
@@ -147,6 +140,27 @@ void voter_instruction(){
     system("clear");
 }
 
+void vote(char info[], int num_candidate){
+    bool flag = true;
+    char codeForVote;
+    for (int i = 0; i < num_candidate; i++)
+    {
+        printf("%s: ", info[i].name);
+        printf("%c", info[i].code);
+        printf("\n");
+    }
+    printf("Enetr the code of candidate who you want to vote for: ");
+    getchar(codeForVote);
+    for (int i = 0; i < num_candidate && flag; i++)
+    {
+        if (codeForVote == info[i].code)
+        {
+            ++info[i].vote;
+            flag = false;
+        }
+    }
+}
+
 int main(){	
     int num_candidate;
     // calling the fucntion for all admin related stuuf
@@ -172,6 +186,23 @@ int main(){
     // Calling the function to display voter instructions 
     voter_instruction();
     printf("Please enter the VOTER ID: ");
-    idCheck();
+    int backFromCheck = idCheck();
+    if (backFromCheck == 69)
+    {
+        // here we link function to allow voter to cast vote.
+        vote(info, num_candidate);
+    }
+    else if (backFromCheck == 420)    
+    {
+        printf("\nPlease press Enter to continue.");
+        char a = "A";
+        while (a!="\n")
+        {
+            getchar(a);
+        }
+        system("clear");
+        voter_instruction();
+    }
+    
     return 0;
 }
