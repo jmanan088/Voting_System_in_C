@@ -7,9 +7,9 @@
 
 // To collect & verify ID of user.
 void idCheck(){
-
+    
     char linr[8];
-    int count=0;
+    int countid=0, countdupli = 0;
     char id[8];
     gets(id);
     FILE *idtxt = NULL;
@@ -22,43 +22,42 @@ void idCheck(){
         temp = strstr(linr,id);
         if (temp!=NULL)
         {
-            count=1;
+            countid=1;
             break;
         }
     }
-    if (count==1)
+    while(fgets(linr, 10, duplicatettxt))
+    {
+        char *temp = NULL;
+        temp = strstr(linr,id);
+        if (temp!=NULL)
+        {
+            countdupli=1;
+            break;
+        }
+    }
+    fclose(idtxt);
+    if (countid==1)
     {
         printf("yes1");
-        count=0;
-        while(fgets(linr, 10, duplicatettxt))
+        if (countdupli==1)
         {
-            char *temp = NULL;
-            temp = strstr(linr,id);
-            if (temp!=NULL)
-            {
-                count=1;
-                break;
-            }
-        }
-        if (count==1)
-        {
+            fclose(duplicatettxt);
             printf("You've already given vote. If think this is incorrect please contact authorities.");
         }
         else
         {
             fprintf(duplicatettxt, "%s\n", id);
+            fclose(duplicatettxt);
             printf("yes2");
             // here we link function to allow voter to cast vote.
         }
-        
     }
     else
     {
         printf("no1");
         // Here we will link another function for display of voter instruction scene.
     }
-    fclose(idtxt);
-    fclose(duplicatettxt);
 }
 
 int main(){	
