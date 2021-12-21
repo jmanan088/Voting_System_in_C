@@ -12,7 +12,7 @@ struct candidates{
     int votes;
 };
 
-// To collect & verify ID of user.
+// To collect & verify ID of voter.
 void idCheck(){
     
     char linr[8];
@@ -62,8 +62,14 @@ void idCheck(){
     }
     else
     {
-        printf("no1");
-        // Here we will link another function for display of voter instruction scene.
+        printf("VOTER ID is does not exist.\nPlease press Enter to continue.");
+        char a = "A";
+        while (a!="\n")
+        {
+            getchar(a);
+        }
+        system("clear");
+        voter_instruction();
     }
 }
 
@@ -118,14 +124,14 @@ int admin(){
 
 // Voter instruction display
 void voter_instruction(){
-    FILE *users_instructions = NULL;
-    users_instructions = fopen("first_display.txt", "r");
-    char user_line[100];
-    while (fgets(user_line, 100, users_instructions) != NULL)
+    FILE *voters_instructions = NULL;
+    voters_instructions = fopen("first_display.txt", "r");
+    char voter_line[100];
+    while (fgets(voter_line, 100, voters_instructions) != NULL)
     {
-        printf("%s", user_line);
+        printf("%s", voter_line);
     }
-    fclose(users_instructions);
+    fclose(voters_instructions);
     printf("\n");
     printf("Press Enter to continue_\n");
     printf("Or press Q to close the voting process_\n");
@@ -152,6 +158,7 @@ int main(){
         gets(info[i].name);
         getchar();
         getchar(info[i].code);
+        info[i].votes = 0;
         printf("\n");
     }
     printf("Press Enter to continue_");
@@ -164,5 +171,7 @@ int main(){
     system("clear");
     // Calling the function to display voter instructions 
     voter_instruction();
+    printf("Please enter the VOTER ID: ");
+    idCheck();
     return 0;
 }
