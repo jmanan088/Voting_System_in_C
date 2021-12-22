@@ -74,7 +74,7 @@ int admin(){
     printf("Press Enter to start to the program_");
     while (a!="\n")
     {
-      getchar(a);
+      getc(a);
     }
     system("clear");
     FILE *admin_instruction = NULL;
@@ -90,7 +90,7 @@ int admin(){
     a = "A";
     while (a!="\n")
     {
-      getchar(a);
+      getc(a);
     }
     system("clear");
     int key_entered;
@@ -137,7 +137,7 @@ int voter_instruction(){
     }
     while (a!="\n")
     {
-        getchar(a);
+        getc(a);
     }
     system("clear");
     return -89;
@@ -154,7 +154,7 @@ void vote(struct candidates info[], int num_candidate){
         printf("\n");
     }
     printf("Enetr the code of candidate who you want to vote for: ");
-    getchar(codeForVote);
+    getc(codeForVote);
     for (int i = 0; i < num_candidate && flag; i++)
     {
         if (codeForVote == info[i].code)
@@ -178,7 +178,7 @@ int exitControl(){
         printf("\n Press Enter to go back_");
         while (a!="\n")
         {
-            getchar(a);
+            getc(a);
         }
         system("clear");
         return -23451;
@@ -200,7 +200,7 @@ int main(){
     {
         gets(info[i].name);
         getchar();
-        getchar(info[i].code);
+        getc(info[i].code);
         info[i].votes = 0;
         printf("\n");
     }
@@ -209,41 +209,43 @@ int main(){
     a = "A";
     while (a!="\n")
     {
-      getchar(a);
+      getc(a);
     }
     system("clear");
     // Calling the function to display voter instructions 
     int backFromINstructions = 0;
-    // label
-    backFromINstructions = voter_instruction();
-    for (int i = 0; backFromINstructions = -89 ; i++)
+    label:
     {
-        printf("Please enter the VOTER ID: ");
-        int backFromCheck = 0;
-        backFromCheck = idCheck();
-        if (backFromCheck == 69)
+        backFromINstructions = voter_instruction();
+        for (int i = 0; backFromINstructions = -89 ; i++)
         {
-            // here we link function to allow voter to cast vote.
-            vote(info, num_candidate);
-            printf("Your vote has been recorded press Enter to exit_");
-            a = "A";
-            while (a!="\n")
+            printf("Please enter the VOTER ID: ");
+            int backFromCheck = 0;
+            backFromCheck = idCheck();
+            if (backFromCheck == 69)
             {
-                getchar(a);
+                // here we link function to allow voter to cast vote.
+                vote(info, num_candidate);
+                printf("Your vote has been recorded press Enter to exit_");
+                a = "A";
+                while (a!="\n")
+                {
+                    getc(a);
+                }
+                system("clear");
+                backFromCheck =  voter_instruction();
             }
-            system("clear");
-            backFromCheck =  voter_instruction();
-        }
-        else if (backFromCheck == 420)    
-        {
-            printf("\nPlease press Enter to continue.");
-            char a = "A";
-            while (a!="\n")
+            else if (backFromCheck == 420)    
             {
-                getchar(a);
+                printf("\nPlease press Enter to continue.");
+                char a = "A";
+                while (a!="\n")
+                {
+                    getc(a);
+                }
+                system("clear");
+                backFromCheck = voter_instruction();
             }
-            system("clear");
-            backFromCheck = voter_instruction();
         }
     }
     int exitValue = exitControl();
