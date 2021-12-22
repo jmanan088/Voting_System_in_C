@@ -70,11 +70,11 @@ int idCheck(){
 
 // To start the program and display instruction for admin.
 int admin(){
-    char a = "A";
+    char a = 'A';
     printf("Press Enter to start to the program_");
-    while (a!="\n")
+    while (a!='\n')
     {
-      getc(a);
+      scanf("%c", &a);
     }
     system("clear");
     FILE *admin_instruction = NULL;
@@ -87,10 +87,10 @@ int admin(){
     fclose(admin_instruction);
     printf("\n");
     printf("Press Enter to continue_");
-    a = "A";
-    while (a!="\n")
+    a = 'A';
+    while (a!='\n')
     {
-      getc(a);
+      scanf("%c", &a);
     }
     system("clear");
     int key_entered;
@@ -130,14 +130,14 @@ int voter_instruction(){
     printf("\n");
     printf("Press Enter to continue_\n");
     printf("Or press Q to close the voting process_\n");
-    char a = "A";
-    if (a=="q" || a=="Q")
+    char a = 'A';
+    if (a=='q' || a=='Q')
     {
         return -6565;
     }
-    while (a!="\n")
+    while (a!='\n')
     {
-        getc(a);
+        scanf("%c", &a);
     }
     system("clear");
     return -89;
@@ -154,7 +154,7 @@ void vote(struct candidates info[], int num_candidate){
         printf("\n");
     }
     printf("Enetr the code of candidate who you want to vote for: ");
-    getc(codeForVote);
+    scanf("%c", &codeForVote);
     for (int i = 0; i < num_candidate && flag; i++)
     {
         if (codeForVote == info[i].code)
@@ -168,7 +168,7 @@ void vote(struct candidates info[], int num_candidate){
 int exitControl(){
     system("clear");
     int key_entered;
-    char a ="A";
+    char a ='A';
     printf("Enter the admin key to close the voting process: ");
     scanf("%d", &key_entered);
     if(key_entered != admin_key)
@@ -176,9 +176,9 @@ int exitControl(){
         system("clear");
         printf("Key is wrong. You are not authorized to stop the voting process.");
         printf("\n Press Enter to go back_");
-        while (a!="\n")
+        while (a!='\n')
         {
-            getc(a);
+            scanf("%c", &a);
         }
         system("clear");
         return -23451;
@@ -200,16 +200,16 @@ int main(){
     {
         gets(info[i].name);
         getchar();
-        getc(info[i].code);
+        scanf("%c", &info[i].code);
         info[i].votes = 0;
         printf("\n");
     }
     printf("Press Enter to continue_");
     char a;
-    a = "A";
-    while (a!="\n")
+    a = 'A';
+    while (a!='\n')
     {
-      getc(a);
+      scanf("%c", &a);
     }
     system("clear");
     // Calling the function to display voter instructions 
@@ -227,10 +227,10 @@ int main(){
                 // here we link function to allow voter to cast vote.
                 vote(info, num_candidate);
                 printf("Your vote has been recorded press Enter to exit_");
-                a = "A";
-                while (a!="\n")
+                a = 'A';
+                while (a!='\n')
                 {
-                    getc(a);
+                    scanf("%c", &a);
                 }
                 system("clear");
                 backFromCheck =  voter_instruction();
@@ -238,10 +238,10 @@ int main(){
             else if (backFromCheck == 420)    
             {
                 printf("\nPlease press Enter to continue.");
-                char a = "A";
-                while (a!="\n")
+                char a = 'A';
+                while (a!='\n')
                 {
-                    getc(a);
+                    scanf("%c", &a);
                 }
                 system("clear");
                 backFromCheck = voter_instruction();
