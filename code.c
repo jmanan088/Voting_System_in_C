@@ -200,7 +200,7 @@ int main(){
     for (int i = 0; i < num_candidate; i++)
     {
         gets(info[i].name);
-        getchar();
+        // getchar();
         scanf("%c", &info[i].code);
         info[i].votes = 0;
         printf("\n");
