@@ -1,0 +1,3 @@
+This is the page for Voter Instructions.
+you need to enter ID and get it verified.
+Only if u have an ID and have not given vote already then you'll be allowed to vote.
