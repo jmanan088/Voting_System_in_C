@@ -191,24 +191,29 @@ int exitControl(){
     
 }
 
+void clear(){
+    while ( getchar() != '\n' );
+}
+
 int main(){	
     int num_candidate;
     // calling the fucntion for all admin related stuuf
     num_candidate = admin();
     // Taking the info for candidates.
     struct candidates info[num_candidate];
+    
     for (int i = 0; i < num_candidate; i++)
     {
-        scanf("%s", &info[i].name);
+        clear();
+        printf("\n%d.\n", i+1);
+        printf("name = ");
+        gets(info[i].name);
+        clear();
+        printf("code = ");
         scanf("%c", &info[i].code);
         info[i].votes = 0;
-        // printf("\n");
     }
-    for (int i = 0; i < num_candidate; i++)
-    {
-        printf("%s", info[i].name);
-        printf(" %c", info[i].code);
-    }
+    clear();
     printf("Press Enter to continue_");
     char a;
     a = 'A';
