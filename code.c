@@ -131,6 +131,7 @@ int voter_instruction(){
     printf("Press Enter to continue_\n");
     printf("Or press Q to close the voting process_\n");
     char a = 'A';
+    scanf("%c", &a);
     if (a=='q' || a=='Q')
     {
         return -6565;
