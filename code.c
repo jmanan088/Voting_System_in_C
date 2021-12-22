@@ -76,7 +76,7 @@ int admin(){
     {
       scanf("%c", &a);
     }
-    system("clear");
+    system("cls");
     FILE *admin_instruction = NULL;
     char admin_line[100];
     admin_instruction = fopen("instruction_admin.txt", "r");
@@ -92,28 +92,28 @@ int admin(){
     {
       scanf("%c", &a);
     }
-    system("clear");
+    system("cls");
     int key_entered;
     printf("Enter the admin key: ");
     scanf("%d", &key_entered);
     while (key_entered != admin_key)
     {
-        system("clear");
+        system("cls");
         printf("Wrong key! Please enter again: ");
         scanf("%d", &key_entered);
     }
-    system("clear");
+    system("cls");
     int num_candidate=0;
     printf("Enter the number of candidates: ");
     scanf("%d", &num_candidate);
     if (num_candidate<2)
     {
-        system("clear");
+        system("cls");
         printf("Invalid input.\n");
         printf("Enter the number of candidates: ");
         scanf("%d", &num_candidate);
     }
-    system("clear");
+    system("cls");
     return num_candidate;
 }
 
@@ -139,7 +139,7 @@ int voter_instruction(){
     {
         scanf("%c", &a);
     }
-    system("clear");
+    system("cls");
     return -89;
 }
 
@@ -166,21 +166,21 @@ void vote(struct candidates info[], int num_candidate){
 }
 
 int exitControl(){
-    system("clear");
+    system("cls");
     int key_entered;
     char a ='A';
     printf("Enter the admin key to close the voting process: ");
     scanf("%d", &key_entered);
     if(key_entered != admin_key)
     {  
-        system("clear");
+        system("cls");
         printf("Key is wrong. You are not authorized to stop the voting process.");
         printf("\n Press Enter to go back_");
         while (a!='\n')
         {
             scanf("%c", &a);
         }
-        system("clear");
+        system("cls");
         return -23451;
     }
     else
@@ -211,7 +211,7 @@ int main(){
     {
       scanf("%c", &a);
     }
-    system("clear");
+    system("cls");
     // Calling the function to display voter instructions 
     int backFromINstructions = 0;
     label:
@@ -232,7 +232,7 @@ int main(){
                 {
                     scanf("%c", &a);
                 }
-                system("clear");
+                system("cls");
                 backFromCheck =  voter_instruction();
             }
             else if (backFromCheck == 420)    
@@ -243,7 +243,7 @@ int main(){
                 {
                     scanf("%c", &a);
                 }
-                system("clear");
+                system("cls");
                 backFromCheck = voter_instruction();
             }
         }
