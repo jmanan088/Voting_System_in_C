@@ -12,7 +12,7 @@ struct candidates{
     int votes;
 };
 
-const int admin_key = 42069;
+const int admin_key = 45987;
 
 // Helper.
 void clear(){
@@ -63,7 +63,7 @@ int idCheck(){
         {
             fprintf(duplicatettxt, "%s\n", id);
             fclose(duplicatettxt);
-            return 69;
+            return 73;
         }
     }
     else
@@ -235,7 +235,7 @@ int main(){
             printf("Please enter the VOTER ID: ");
             int backFromCheck = 0;
             backFromCheck = idCheck();
-            if (backFromCheck == 69)
+            if (backFromCheck == 73)
             {
                 // here we link function to allow voter to cast vote.
                 vote(info, num_candidate);
