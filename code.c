@@ -12,6 +12,8 @@ struct candidates{
     int votes;
 };
 
+const int admin_key = 42069;
+
 // To collect & verify ID of voter.
 int idCheck(){
     
@@ -91,7 +93,7 @@ int admin(){
       getchar(a);
     }
     system("clear");
-    int key_entered, admin_key = 42069;
+    int key_entered;
     printf("Enter the admin key: ");
     scanf("%d", &key_entered);
     while (key_entered != admin_key)
@@ -116,7 +118,7 @@ int admin(){
 }
 
 // Voter instruction display.
-void voter_instruction(){
+int voter_instruction(){
     FILE *voters_instructions = NULL;
     voters_instructions = fopen("first_display.txt", "r");
     char voter_line[100];
@@ -131,13 +133,14 @@ void voter_instruction(){
     char a = "A";
     if (a=="q" || a=="Q")
     {
-        // Attach here the function to close application
+        return -6565;
     }
     while (a!="\n")
     {
         getchar(a);
     }
     system("clear");
+    return -89;
 }
 
 // To allow voter to vote.
@@ -160,6 +163,31 @@ void vote(struct candidates info[], int num_candidate){
             flag = false;
         }
     }
+}
+
+int exitControl(){
+    system("clear");
+    int key_entered;
+    char a ="A";
+    printf("Enter the admin key to close the voting process: ");
+    scanf("%d", &key_entered);
+    if(key_entered != admin_key)
+    {  
+        system("clear");
+        printf("Key is wrong. You are not authorized to stop the voting process.");
+        printf("\n Press Enter to go back_");
+        while (a!="\n")
+        {
+            getchar(a);
+        }
+        system("clear");
+        return -23451;
+    }
+    else
+    {
+        return -7778;
+    }
+    
 }
 
 int main(){	
@@ -185,25 +213,55 @@ int main(){
     }
     system("clear");
     // Calling the function to display voter instructions 
-    voter_instruction();
-    printf("Please enter the VOTER ID: ");
-    int backFromCheck = idCheck();
-    if (backFromCheck == 69)
+    int backFromINstructions = 0;
+    // label
+    backFromINstructions = voter_instruction();
+    for (int i = 0; backFromINstructions = -89 ; i++)
     {
-        // here we link function to allow voter to cast vote.
-        vote(info, num_candidate);
-    }
-    else if (backFromCheck == 420)    
-    {
-        printf("\nPlease press Enter to continue.");
-        char a = "A";
-        while (a!="\n")
+        printf("Please enter the VOTER ID: ");
+        int backFromCheck = 0;
+        backFromCheck = idCheck();
+        if (backFromCheck == 69)
         {
-            getchar(a);
+            // here we link function to allow voter to cast vote.
+            vote(info, num_candidate);
+            printf("Your vote has been recorded press Enter to exit_");
+            a = "A";
+            while (a!="\n")
+            {
+                getchar(a);
+            }
+            system("clear");
+            backFromCheck =  voter_instruction();
         }
-        system("clear");
-        voter_instruction();
+        else if (backFromCheck == 420)    
+        {
+            printf("\nPlease press Enter to continue.");
+            char a = "A";
+            while (a!="\n")
+            {
+                getchar(a);
+            }
+            system("clear");
+            backFromCheck = voter_instruction();
+        }
     }
-
+    int exitValue = exitControl();
+    if (exitValue == -23451)
+    {
+        goto label;
+    }
+    else
+    {
+        FILE *votePrinter = NULL;
+        votePrinter = fopen("vote.txt", "w");
+        for (int i = 0; i < num_candidate; i++)
+        {
+            fprintf(votePrinter, "%s", info[i].name);
+            fprintf(votePrinter, ": %c", info[i].code);
+            fprintf(votePrinter, "\n%d\n\n", info[i].votes);
+        }
+        fclose(votePrinter);
+    }
     return 0;
 }
