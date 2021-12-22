@@ -199,11 +199,15 @@ int main(){
     struct candidates info[num_candidate];
     for (int i = 0; i < num_candidate; i++)
     {
-        gets(info[i].name);
-        // getchar();
+        scanf("%s", &info[i].name);
         scanf("%c", &info[i].code);
         info[i].votes = 0;
-        printf("\n");
+        // printf("\n");
+    }
+    for (int i = 0; i < num_candidate; i++)
+    {
+        printf("%s", info[i].name);
+        printf(" %c", info[i].code);
     }
     printf("Press Enter to continue_");
     char a;
