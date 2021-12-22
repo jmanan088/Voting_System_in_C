@@ -1,0 +1,4 @@
+Admin instruction page...
+After pressing enter to continue.
+Enter the number of candidate and their info.
+To start.
