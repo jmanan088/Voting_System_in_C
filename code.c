@@ -14,6 +14,11 @@ struct candidates{
 
 const int admin_key = 42069;
 
+// Helper.
+void clear(){
+    while ( getchar() != '\n' );
+}
+
 // To collect & verify ID of voter.
 int idCheck(){
     
@@ -166,12 +171,14 @@ void vote(struct candidates info[], int num_candidate){
     }
 }
 
+// Exiting the program.
 int exitControl(){
     system("cls");
     int key_entered;
     char a ='A';
     printf("Enter the admin key to close the voting process: ");
     scanf("%d", &key_entered);
+    clear();
     if(key_entered != admin_key)
     {  
         system("cls");
@@ -189,10 +196,6 @@ int exitControl(){
         return -7778;
     }
     
-}
-
-void clear(){
-    while ( getchar() != '\n' );
 }
 
 int main(){	
@@ -227,7 +230,7 @@ int main(){
     label:
     {
         backFromINstructions = voter_instruction();
-        for (int i = 0; backFromINstructions = -89 ; i++)
+        for (int i = 0; backFromINstructions == -89 ; i++)
         {
             printf("Please enter the VOTER ID: ");
             int backFromCheck = 0;
@@ -236,6 +239,7 @@ int main(){
             {
                 // here we link function to allow voter to cast vote.
                 vote(info, num_candidate);
+                clear();
                 printf("Your vote has been recorded press Enter to exit_");
                 a = 'A';
                 while (a!='\n')
@@ -243,7 +247,6 @@ int main(){
                     scanf("%c", &a);
                 }
                 system("cls");
-                backFromCheck =  voter_instruction();
             }
             else if (backFromCheck == 420)    
             {
@@ -254,8 +257,8 @@ int main(){
                     scanf("%c", &a);
                 }
                 system("cls");
-                backFromCheck = voter_instruction();
             }
+            backFromINstructions = voter_instruction();
         }
     }
     int exitValue = exitControl();
