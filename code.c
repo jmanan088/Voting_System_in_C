@@ -4,7 +4,7 @@
 #include<time.h>
 #include<conio.h>
 #include<stdbool.h>
-#include <windows.h>
+#include<windows.h>
 
 // Structure for storing candidate info and votes.
 struct candidates{
@@ -115,13 +115,24 @@ int admin(){
     space_provide();
     printf("Enter the admin key: ");
     scanf("%d", &key_entered);
+    int count=0;
     while (key_entered != admin_key)
     {
         system("cls");
         printf("\n\n\n\n\n\n\n\n");
+        if (count==3)
+        {
+            space_provide();
+            printf("Entering the key wrong again will cause system to shut.\n");
+        }
+        if (count==4)
+        {
+            return -69;
+        }    
         space_provide();
         printf("Wrong key! Please enter again: ");
         scanf("%d", &key_entered);
+        count++;
     }
     system("cls");
     printf("\n\n\n\n\n\n\n\n");
@@ -204,6 +215,7 @@ int exitControl(){
     printf("\n\n\n\n\n\n\n\n");
     int key_entered;
     char a ='A';
+    system("color 47");
     space_provide();
     printf("Enter the admin key to close the voting process: ");
     scanf("%d", &key_entered);
@@ -214,12 +226,35 @@ int exitControl(){
         printf("\n\n\n\n\n\n\n\n");
         space_provide();
         printf(" Key is wrong. You are not authorized to stop the voting process.");
+        printf("\n");
         space_provide();
-        printf("\nPress Enter to go back_");
-        while (a!='\n')
+        printf("Please contact authorities");
+        printf("\n");
+        space_provide();
+        printf("Enter the admin key: ");
+        scanf("%d", &key_entered);
+        int count=0;
+        while (key_entered != admin_key)
         {
-            scanf("%c", &a);
+            system("cls");
+            printf("\n\n\n\n\n\n\n\n");
+            if (count==3)
+            {
+                space_provide();
+                printf("Entering the key wrong again will cause system to shut.\n");
+            }
+            if (count==4)
+            {
+                return -69;
+            }    
+            space_provide();
+            printf("Wrong key! Please enter again: ");
+            scanf("%d", &key_entered);
+            count++;
         }
+        // Redirecting screen
+
+        system("color b0");
         system("cls");
         printf("\n\n\n\n\n\n\n\n");
         return -23451;
@@ -228,7 +263,6 @@ int exitControl(){
     {
         return -7778;
     }
-    
 }
 
 int main(){	
@@ -236,8 +270,13 @@ int main(){
     printf("\n\n\n\n\n\n\n\n");
     system("color b0");
     int num_candidate;
-    // calling the fucntion for all admin related stuuf
+    // calling the function for all admin related stuff
     num_candidate = admin();
+    // If the admin key is entered wrong 4 times then program will close
+    if (num_candidate==-69)
+    {
+        return 0;
+    }
     // Taking the info for candidates.
     struct candidates info[num_candidate];
     int i;
@@ -256,6 +295,7 @@ int main(){
         scanf("%c", &info[i].code);
         info[i].votes = 0;
     }
+    // Adding NOTA option to already entered list
     strcpy(info[i].name, "NOTA");
     info[i].code = 'N';
     info[i].votes = 0;
@@ -266,7 +306,7 @@ int main(){
     a = 'A';
     while (a!='\n')
     {
-      scanf("%c", &a);
+    scanf("%c", &a);
     }
     system("cls");
     printf("\n\n\n\n\n\n");
@@ -287,7 +327,7 @@ int main(){
                 vote(info, num_candidate);
                 fflush(stdin);
                 space_provide();
-                printf("Your vote has been recorded press Enter to exit_");
+                printf("Your vote has been recorded press Enter to exit ");
                 a = 'A';
                 while (a!='\n')
                 {
@@ -312,6 +352,7 @@ int main(){
             backFromINstructions = voter_instruction();
         }
     }
+    // }
     int exitValue = exitControl();
     if (exitValue == -23451)
     {
