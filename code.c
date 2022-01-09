@@ -170,6 +170,7 @@ int voter_instruction(){
     fclose(voters_instructions);
     printf("\n");
     char a = 'A';
+    fflush(stdin);
     space_provide();
     scanf("%c", &a);
     if (a=='q' || a=='Q')
