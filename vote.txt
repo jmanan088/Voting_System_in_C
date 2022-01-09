@@ -1,6 +1,9 @@
-manan : m
-2
+manan: m
+0
 
-pranay: p
-3
+kdkd: k
+0
+
+NOTA: N
+17
 

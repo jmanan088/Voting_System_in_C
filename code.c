@@ -119,7 +119,7 @@ int admin(){
         scanf("%d", &num_candidate);
     }
     system("cls");
-    return num_candidate;
+    return num_candidate+1;
 }
 
 // Voter instruction display.
@@ -204,8 +204,8 @@ int main(){
     num_candidate = admin();
     // Taking the info for candidates.
     struct candidates info[num_candidate];
-    
-    for (int i = 0; i < num_candidate; i++)
+    int i;
+    for (i = 0; i < num_candidate-1; i++)
     {
         clear();
         printf("\n%d.\n", i+1);
@@ -216,6 +216,8 @@ int main(){
         scanf("%c", &info[i].code);
         info[i].votes = 0;
     }
+    strcpy(info[i].name, "NOTA");
+    info[i].code = 'N';
     clear();
     printf("Press Enter to continue_");
     char a;
