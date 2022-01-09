@@ -1,9 +1,9 @@
-kshd: L
-0
+manam: M
+1
 
-sjshd: S
+naman: N
 0
 
 NOTA: N
-1
+0
 

@@ -14,11 +14,6 @@ struct candidates{
 
 const int admin_key = 45987;
 
-// Helper.
-void clear(){
-    while ( getchar() != '\n' );
-}
-
 // To collect & verify ID of voter.
 int idCheck(){
     
@@ -178,7 +173,7 @@ int exitControl(){
     char a ='A';
     printf("Enter the admin key to close the voting process: ");
     scanf("%d", &key_entered);
-    clear();
+    fflush(stdin);
     if(key_entered != admin_key)
     {  
         system("cls");
@@ -207,11 +202,11 @@ int main(){
     int i;
     for (i = 0; i < num_candidate-1; i++)
     {
-        clear();
+        fflush(stdin);
         printf("\n%d.\n", i+1);
         printf("name = ");
         gets(info[i].name);
-        clear();
+        fflush(stdin);
         printf("code = ");
         scanf("%c", &info[i].code);
         info[i].votes = 0;
@@ -219,7 +214,7 @@ int main(){
     strcpy(info[i].name, "NOTA");
     info[i].code = 'N';
     info[i].votes = 0;
-    clear();
+    fflush(stdin);
     printf("Press Enter to continue_");
     char a;
     a = 'A';
@@ -242,7 +237,7 @@ int main(){
             {
                 // here we link function to allow voter to cast vote.
                 vote(info, num_candidate);
-                clear();
+                fflush(stdin);
                 printf("Your vote has been recorded press Enter to exit_");
                 a = 'A';
                 while (a!='\n')
