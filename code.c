@@ -218,6 +218,7 @@ int main(){
     }
     strcpy(info[i].name, "NOTA");
     info[i].code = 'N';
+    info[i].votes = 0;
     clear();
     printf("Press Enter to continue_");
     char a;
