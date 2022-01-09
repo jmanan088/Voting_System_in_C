@@ -1,4 +1,12 @@
-Admin instruction page...
-After pressing enter to continue.
-Enter the number of candidate and their info.
-To start.
+> After pressing Enter to continue.
+> Enter the number of candidate and their info.
+> Along with an additional option will be added automatically.
+> This another option has NOTA in it with code N.
+> It has been added to options as the orders of court.
+> After entering all the details correctly.
+> Press Enter to continue again.
+> Note that if details are entered incorrect then,
+  you have to resart the program. 
+> Then the voter instruction page will open.
+> Which means program is ready for voting.
+To start:

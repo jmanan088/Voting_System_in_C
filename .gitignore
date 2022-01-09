@@ -1,3 +1,4 @@
 *.exe
 documentation/
 *.vscode
+extra.c

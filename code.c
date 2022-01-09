@@ -4,6 +4,7 @@
 #include<time.h>
 #include<conio.h>
 #include<stdbool.h>
+#include <windows.h>
 
 // Structure for storing candidate info and votes.
 struct candidates{
@@ -11,6 +12,14 @@ struct candidates{
     char code;
     int votes;
 };
+
+// Helper
+void space_provide(){
+    for (int i = 0; i < 64; i++)
+    {
+        printf(" ");
+    }
+}
 
 const int admin_key = 45987;
 
@@ -51,6 +60,7 @@ int idCheck(){
         if (countdupli==1)
         {
             fclose(duplicatettxt);
+            space_provide();
             printf("You've already given vote. If think this is incorrect please contact authorities.");
             return 420;
         }
@@ -63,6 +73,7 @@ int idCheck(){
     }
     else
     {
+        space_provide();
         printf("VOTER ID is does not exist. If think this is incorrect please contact authorities.");
         return 420;
     }
@@ -71,21 +82,27 @@ int idCheck(){
 // To start the program and display instruction for admin.
 int admin(){
     char a = 'A';
+    space_provide();
     printf("Press Enter to start to the program_");
     while (a!='\n')
     {
       scanf("%c", &a);
     }
     system("cls");
+    printf("\n\n\n\n\n\n");
     FILE *admin_instruction = NULL;
     char admin_line[100];
     admin_instruction = fopen("instruction_admin.txt", "r");
+    space_provide();
+    printf("    %c%c%c%c%c%c ADMIN INSTRUCTIONS %c%c%c%c%c%c\n",254,254,254,254,254,254,254,254,254,254,254,254,254,254);
     while (fgets(admin_line, 100, admin_instruction) != NULL)
     {
+        space_provide();
         printf("%s", admin_line);
     }
     fclose(admin_instruction);
     printf("\n");
+    space_provide();
     printf("Press Enter to continue_");
     a = 'A';
     while (a!='\n')
@@ -93,27 +110,37 @@ int admin(){
       scanf("%c", &a);
     }
     system("cls");
+    printf("\n\n\n\n\n\n\n\n");
     int key_entered;
+    space_provide();
     printf("Enter the admin key: ");
     scanf("%d", &key_entered);
     while (key_entered != admin_key)
     {
         system("cls");
+        printf("\n\n\n\n\n\n\n\n");
+        space_provide();
         printf("Wrong key! Please enter again: ");
         scanf("%d", &key_entered);
     }
     system("cls");
+    printf("\n\n\n\n\n\n\n\n");
     int num_candidate=0;
+    space_provide();
     printf("Enter the number of candidates: ");
     scanf("%d", &num_candidate);
     if (num_candidate<2)
     {
         system("cls");
+        printf("\n\n\n\n\n\n\n\n");
+        space_provide();
         printf("Invalid input.\n");
+        space_provide();
         printf("Enter the number of candidates: ");
         scanf("%d", &num_candidate);
     }
     system("cls");
+    printf("\n\n\n\n\n\n\n\n");
     return num_candidate+1;
 }
 
@@ -121,16 +148,18 @@ int admin(){
 int voter_instruction(){
     FILE *voters_instructions = NULL;
     voters_instructions = fopen("first_display.txt", "r");
+    space_provide();
+    printf("    %c%c%c%c%c%c VOTER INSTRUCTIONS %c%c%c%c%c%c\n",254,254,254,254,254,254,254,254,254,254,254,254,254,254);
     char voter_line[100];
     while (fgets(voter_line, 100, voters_instructions) != NULL)
     {
+        space_provide();
         printf("%s", voter_line);
     }
     fclose(voters_instructions);
     printf("\n");
-    printf("Press Enter to continue_\n");
-    printf("Or press Q to close the voting process_\n");
     char a = 'A';
+    space_provide();
     scanf("%c", &a);
     if (a=='q' || a=='Q')
     {
@@ -141,6 +170,7 @@ int voter_instruction(){
         scanf("%c", &a);
     }
     system("cls");
+    printf("\n\n\n\n\n\n\n\n");
     return -89;
 }
 
@@ -150,11 +180,13 @@ void vote(struct candidates info[], int num_candidate){
     char codeForVote;
     for (int i = 0; i < num_candidate; i++)
     {
+        space_provide();
         printf("%s: ", info[i].name);
         printf("%c", info[i].code);
         printf("\n");
     }
-    printf("Enetr the code of candidate who you want to vote for: ");
+    space_provide();
+    printf("Enter the code of candidate who you want to vote for: ");
     scanf("%c", &codeForVote);
     for (int i = 0; i < num_candidate && flag; i++)
     {
@@ -169,21 +201,27 @@ void vote(struct candidates info[], int num_candidate){
 // Exiting the program.
 int exitControl(){
     system("cls");
+    printf("\n\n\n\n\n\n\n\n");
     int key_entered;
     char a ='A';
+    space_provide();
     printf("Enter the admin key to close the voting process: ");
     scanf("%d", &key_entered);
     fflush(stdin);
     if(key_entered != admin_key)
     {  
         system("cls");
-        printf("Key is wrong. You are not authorized to stop the voting process.");
-        printf("\n Press Enter to go back_");
+        printf("\n\n\n\n\n\n\n\n");
+        space_provide();
+        printf(" Key is wrong. You are not authorized to stop the voting process.");
+        space_provide();
+        printf("\nPress Enter to go back_");
         while (a!='\n')
         {
             scanf("%c", &a);
         }
         system("cls");
+        printf("\n\n\n\n\n\n\n\n");
         return -23451;
     }
     else
@@ -194,6 +232,9 @@ int exitControl(){
 }
 
 int main(){	
+    system("cls");
+    printf("\n\n\n\n\n\n\n\n");
+    system("color b0");
     int num_candidate;
     // calling the fucntion for all admin related stuuf
     num_candidate = admin();
@@ -203,11 +244,15 @@ int main(){
     for (i = 0; i < num_candidate-1; i++)
     {
         fflush(stdin);
-        printf("\n%d.\n", i+1);
-        printf("name = ");
+        printf("\n");
+        space_provide();
+        printf("%d.\n", i+1);
+        space_provide();
+        printf("Name of candidate = ");
         gets(info[i].name);
         fflush(stdin);
-        printf("code = ");
+        space_provide();
+        printf("Code for the candidate = ");
         scanf("%c", &info[i].code);
         info[i].votes = 0;
     }
@@ -215,6 +260,7 @@ int main(){
     info[i].code = 'N';
     info[i].votes = 0;
     fflush(stdin);
+    space_provide();
     printf("Press Enter to continue_");
     char a;
     a = 'A';
@@ -223,6 +269,7 @@ int main(){
       scanf("%c", &a);
     }
     system("cls");
+    printf("\n\n\n\n\n\n");
     // Calling the function to display voter instructions 
     int backFromINstructions = 0;
     label:
@@ -230,6 +277,7 @@ int main(){
         backFromINstructions = voter_instruction();
         for (int i = 0; backFromINstructions == -89 ; i++)
         {
+            space_provide();
             printf("Please enter the VOTER ID: ");
             int backFromCheck = 0;
             backFromCheck = idCheck();
@@ -238,6 +286,7 @@ int main(){
                 // here we link function to allow voter to cast vote.
                 vote(info, num_candidate);
                 fflush(stdin);
+                space_provide();
                 printf("Your vote has been recorded press Enter to exit_");
                 a = 'A';
                 while (a!='\n')
@@ -245,16 +294,20 @@ int main(){
                     scanf("%c", &a);
                 }
                 system("cls");
+                printf("\n\n\n\n\n\n");
             }
             else if (backFromCheck == 420)    
             {
-                printf("\nPlease press Enter to continue.");
+                printf("\n");
+                space_provide();
+                printf("Please press Enter to continue.");
                 char a = 'A';
                 while (a!='\n')
                 {
                     scanf("%c", &a);
                 }
                 system("cls");
+                printf("\n\n\n\n\n\n");
             }
             backFromINstructions = voter_instruction();
         }

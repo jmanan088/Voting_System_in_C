@@ -1,9 +1,9 @@
-manam: M
+Manan: M
+0
+
+Ojasvi: O
 1
 
-naman: N
-0
-
 NOTA: N
-0
+1
 

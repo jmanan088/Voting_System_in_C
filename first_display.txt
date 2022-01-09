@@ -1,3 +1,10 @@
-This is the page for Voter Instructions.
-you need to enter ID and get it verified.
-Only if u have an ID and have not given vote already then you'll be allowed to vote.
+> You need to enter ID and get it verified.
+> Only if u have the correct ID.
+> And has not given vote before.
+> Only then you'll be allowed.
+> Please do not try to give vote again.
+> A legal action can and will be taken for the same.
+> Press Enter to continue:
+> NOTE: THIS INPUT IS ONLY FOR ADMIN.
+> NOTE: DO NOT TRY TO USE THIS.
+> Press Q to close the voting process:
