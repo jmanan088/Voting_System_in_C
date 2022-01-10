@@ -21,6 +21,15 @@ void space_provide(){
     }
 }
 
+void delay(int milli_seconds){  
+    // Storing start time
+    clock_t start_time = clock();
+    // looping till required time is not achieved
+    while (clock() < start_time + milli_seconds)
+        ;
+}
+
+// Admin key 
 const int admin_key = 45987;
 
 // To collect & verify ID of voter.
@@ -216,7 +225,7 @@ int exitControl(){
     printf("\n\n\n\n\n\n\n\n");
     int key_entered;
     char a ='A';
-    system("color 47");
+    system("color 40");
     space_provide();
     printf("Enter the admin key to close the voting process: ");
     scanf("%d", &key_entered);
@@ -226,7 +235,7 @@ int exitControl(){
         system("cls");
         printf("\n\n\n\n\n\n\n\n");
         space_provide();
-        printf(" Key is wrong. You are not authorized to stop the voting process.");
+        printf("Key is wrong. You are not authorized to stop the voting process.");
         printf("\n");
         space_provide();
         printf("Please contact authorities");
@@ -254,7 +263,16 @@ int exitControl(){
             count++;
         }
         // Redirecting screen
-
+        system("color a0");
+        system("cls");
+        printf("\n\n\n\n\n\n\n\n");
+        space_provide();
+        printf("Redirecting");
+        for (int i = 0; i < 4; i++)
+        {
+            printf(".");
+            delay(300);
+        }
         system("color b0");
         system("cls");
         printf("\n\n\n\n\n\n\n\n");
@@ -328,12 +346,27 @@ int main(){
                 vote(info, num_candidate);
                 fflush(stdin);
                 space_provide();
-                printf("Your vote has been recorded press Enter to exit ");
+                printf("Your vote has been recorded.\n");
+                space_provide();
+                printf("For security purpose please press Enter before leaving\n");
+                space_provide();
                 a = 'A';
                 while (a!='\n')
                 {
                     scanf("%c", &a);
                 }
+                // Redirection screen
+                system("color a0");
+                system("cls");
+                printf("\n\n\n\n\n\n\n\n");
+                space_provide();
+                printf("Redirecting");
+                for (int i = 0; i < 4; i++)
+                {
+                    printf(".");
+                    delay(300);
+                }
+                system("color b0");
                 system("cls");
                 printf("\n\n\n\n\n\n");
             }
