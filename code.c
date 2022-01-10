@@ -396,6 +396,9 @@ int main(){
     {
         FILE *votePrinter = NULL;
         votePrinter = fopen("vote.txt", "w");
+        fprintf(votePrinter, "%s", "This voting was done at");
+        fprintf(votePrinter, " %s", __TIME__);
+        fprintf(votePrinter, " on %s\n\n\n", __DATE__);
         for (int i = 0; i < num_candidate; i++)
         {
             fprintf(votePrinter, "%s", info[i].name);
