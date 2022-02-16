@@ -1,11 +1,5 @@
-# SDF_Mini_Project
-Voting system - for SDF-1 Mini Project.
-
-Manan Jain
-
-B63351 ,A5
-
-ECE
+Mini_Project
+Voting system 
 
 ------------------------------------------------------------------------------------
 
@@ -28,18 +22,3 @@ next voter to vote. Once the voting is done admin can enter the exit input along
 with his key to exit the program. After exiting the results will be shown.
 
 ------------------------------------------------------------------------------------
-
-Topics Used
-
-1) STDIN and STDOUT
-
-2) Control Flow
-
-3) Array
-
-4) Functions
-
-5) Pointers
-
-6) File handlin
-
